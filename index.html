@@ -206,6 +206,21 @@ section{padding-block:clamp(4.5rem,9vw,7.5rem)}
 .row-btns .btn{width:auto;flex:1 1 auto;padding:.9rem 1.1rem;font-size:.92rem}
 .btn-soft-l{background:#EEF2FA;color:#08122E}
 .btn-soft-l:hover{background:#E1E8F7}
+.result [hidden],.start [hidden]{display:none!important}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.start .done.sent{text-align:left}
+.sent-tick{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:rgba(17,160,98,.12);color:#0E8A55;margin-bottom:.9rem}
+.sent-tick svg{width:28px;height:28px}
+.btn[aria-busy="true"]{opacity:.75;pointer-events:none}
+.hc-send{margin-top:1.1rem}
+.hc-send label{display:block;font-size:.86rem;font-weight:700;color:rgba(255,255,255,.82);margin-bottom:.5rem}
+.hc-row{display:flex;gap:.6rem;flex-wrap:wrap}
+.hc-row input{flex:1 1 220px;min-width:0;font:500 1rem/1.4 var(--body);padding:.8rem 1rem;border-radius:10px;border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.07);color:#fff}
+.hc-row input::placeholder{color:rgba(255,255,255,.55)}
+.hc-row input:focus{outline:none;border-color:#E9A112;box-shadow:0 0 0 4px rgba(233,161,18,.18)}
+.hc-row .btn{flex:0 0 auto}
+.hc-err{color:#FF9DB4;font-size:.86rem;font-weight:600;margin:.5rem 0 0}
+.hc-ok{margin-top:1rem;padding:.85rem 1rem;border-radius:10px;background:rgba(17,160,98,.16);color:#BDF3D6;font-weight:600;font-size:.95rem}
 .linkbtn{all:unset;cursor:pointer;margin-top:1rem;font-size:.86rem;font-weight:700;color:#2456FF}
 
 /* punch tape */
@@ -738,19 +753,27 @@ footer a:hover{color:#fff}
           <option>Need ongoing support</option>
         </select>
         <p class="err" id="s-err" hidden>Enter a work email so we can reply to you.</p>
-        <button class="btn btn-cobalt" type="submit">Get started <svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4L12.5 8l-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <input type="checkbox" name="botcheck" id="s-bot" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn btn-cobalt" type="submit" id="s-submit">Get started <svg viewBox="0 0 16 16"><path d="M3 8h9M8.5 4L12.5 8l-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
         <small>No obligation. Your details stay with The Duke Force.</small>
       </div>
       <div class="done" id="startDone" hidden>
-        <span class="tagline">Almost there</span>
-        <h3 style="margin-top:.5rem">Your enquiry is ready to send</h3>
-        <p>Send it to <b class="sel">info@thedukeforce.com</b> and a consultant will reply within one business day.</p>
+        <span class="tagline">One more step</span>
+        <h3 style="margin-top:.5rem">Our form couldn't send just now</h3>
+        <p>Please send your enquiry to <b class="sel">info@thedukeforce.com</b> and a consultant will reply within one business day.</p>
         <pre class="msg" id="s-msg"></pre>
         <div class="row-btns">
           <button type="button" class="btn btn-cobalt" id="s-copy">Copy message</button>
           <a class="btn btn-soft-l" id="s-mailto" href="#">Open email app</a>
         </div>
         <button type="button" class="linkbtn" id="s-edit">Edit details</button>
+      </div>
+      <div class="done sent" id="startSent" hidden>
+        <span class="sent-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 12.5l3.6 3.4L17.5 8.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="tagline">Enquiry received</span>
+        <h3 style="margin-top:.5rem">Thank you<span id="sent-name"></span>.</h3>
+        <p>Your enquiry is with The Duke Force. A senior consultant will reply to <b id="sent-email"></b> within one business day, from <b>info@thedukeforce.com</b>.</p>
+        <button type="button" class="linkbtn" id="s-new">Send another enquiry</button>
       </div>
     </form>
   </div>
@@ -926,7 +949,14 @@ footer a:hover{color:#fff}
         <svg class="gauge" viewBox="0 0 110 110" aria-hidden="true"><circle cx="55" cy="55" r="46" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="10"/><circle id="gauge" cx="55" cy="55" r="46" fill="none" stroke="#E9A112" stroke-width="10" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="289" transform="rotate(-90 55 55)"/><text id="gtext" x="55" y="63" text-anchor="middle" fill="#fff" font-family="Archivo, sans-serif" font-weight="800" font-size="24">0/6</text></svg>
         <div>
           <h4 id="r-head"></h4><p id="r-text"></p><ul id="r-list"></ul>
-          <div class="row-btns"><button type="button" class="btn btn-gold" id="r-copy">Copy my results</button><a class="btn btn-ghost" id="r-send" href="#contact">Email them to us</a></div>
+          <form class="hc-send" id="hcForm" novalidate>
+            <label for="hc-email">Send your results for a free expert review</label>
+            <div class="hc-row"><input id="hc-email" type="email" autocomplete="email" placeholder="Your work email"><button class="btn btn-gold" type="submit" id="hc-submit">Send results</button></div>
+            <input type="checkbox" id="hc-bot" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <p class="hc-err" id="hc-err" hidden>Enter a work email so we can reply to you.</p>
+          </form>
+          <p class="hc-ok" id="hc-ok" hidden></p>
+          <div class="row-btns"><button type="button" class="btn btn-ghost" id="r-copy">Copy my results</button><a class="btn btn-ghost" id="r-send" href="#contact" hidden>Email them to us</a></div>
         </div>
       </div>
     </div>
@@ -1075,6 +1105,15 @@ var PHOTOS = {
 
 (function(){
   var EMAIL="info@thedukeforce.com";
+  /* Web3Forms access key: enquiries are delivered to info@thedukeforce.com */
+  var FORM_KEY="c8d9465c-9bca-4f9f-bb9a-25a32ec86702";
+  function sendForm(data){
+    if(!FORM_KEY) return Promise.reject(new Error("no key"));
+    data.access_key=FORM_KEY; data.from_name="The Duke Force website";
+    return fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(data)})
+      .then(function(r){return r.json().then(function(j){if(!r.ok||!j.success)throw new Error(j.message||"failed");return j;});});
+  }
+  function busy(btn,on,label){if(on){btn.dataset.label=btn.innerHTML;btn.textContent=label;btn.setAttribute("aria-busy","true");}else{btn.innerHTML=btn.dataset.label||btn.innerHTML;btn.removeAttribute("aria-busy");}}
   var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function $(id){return document.getElementById(id);}
   $("yr").textContent=new Date().getFullYear();
@@ -1365,8 +1404,14 @@ var PHOTOS = {
     var msg="Hello The Duke Force team,\n\nWe'd like to talk about our UKG Ready project.\n\nName: "+(name||"(not given)")+"\nEmail: "+em+"\nWhere we are: "+st+"\n\nThanks!";
     $("s-msg").textContent=msg;
     $("s-mailto").href="mailto:"+EMAIL+"?subject="+encodeURIComponent("UKG Ready enquiry: "+st)+"&body="+encodeURIComponent(msg);
-    $("startFields").hidden=true;$("startDone").hidden=false;
+    function sent(){$("sent-name").textContent=name?", "+name.split(" ")[0]:"";$("sent-email").textContent=em;$("startFields").hidden=true;$("startDone").hidden=true;$("startSent").hidden=false;}
+    if($("s-bot").checked){sent();return;}
+    var btn=$("s-submit");busy(btn,true,"Sending…");
+    sendForm({subject:"New UKG Ready enquiry: "+st+" ("+(name||em)+")",name:name||"(not given)",email:em,stage:st,message:msg})
+      .then(function(){busy(btn,false);sent();})
+      .catch(function(){busy(btn,false);$("startFields").hidden=true;$("startDone").hidden=false;});
   });
+  $("s-new").addEventListener("click",function(){$("startSent").hidden=true;$("startFields").hidden=false;form.reset();$("s-name").focus();});
   $("s-copy").addEventListener("click",function(){copyText($("s-msg").textContent,this,$("s-msg"));});
   $("s-edit").addEventListener("click",function(){$("startDone").hidden=true;$("startFields").hidden=false;$("s-email").focus();});
 
@@ -1399,6 +1444,18 @@ var PHOTOS = {
     $("r-send").href="mailto:"+EMAIL+"?subject="+encodeURIComponent("UKG Ready health check: "+y+"/6")+"&body="+encodeURIComponent(summary);
   }
   $("r-copy").addEventListener("click",function(){copyText(summary,this,$("r-list"));});
+  $("hcForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var em=$("hc-email").value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){$("hc-err").hidden=false;$("hc-email").focus();return;}
+    $("hc-err").hidden=true;
+    function ok(){$("hcForm").hidden=true;$("hc-ok").textContent="Thank you. Your results are with The Duke Force, and a consultant will reply to "+em+" within one business day.";$("hc-ok").hidden=false;}
+    if($("hc-bot").checked){ok();return;}
+    var btn=$("hc-submit");busy(btn,true,"Sending…");
+    sendForm({subject:"UKG Ready health check: "+$("gtext").textContent+" ("+em+")",email:em,score:$("gtext").textContent,message:summary+"\n\nReply to: "+em})
+      .then(function(){busy(btn,false);ok();})
+      .catch(function(){busy(btn,false);$("hc-err").textContent="Our form couldn't send just now. Please use Email them to us below.";$("hc-err").hidden=false;$("r-send").hidden=false;});
+  });
 })();
 </script>
 
