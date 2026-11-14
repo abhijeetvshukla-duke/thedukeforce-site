@@ -207,6 +207,8 @@ section{padding-block:clamp(4.5rem,9vw,7.5rem)}
 .btn-soft-l{background:#EEF2FA;color:#08122E}
 .btn-soft-l:hover{background:#E1E8F7}
 .result [hidden],.start [hidden]{display:none!important}
+@keyframes formFlash{0%{box-shadow:0 0 0 0 rgba(233,161,18,.0),0 50px 90px -35px rgba(0,0,0,.7)}30%{box-shadow:0 0 0 6px rgba(233,161,18,.55),0 50px 90px -35px rgba(0,0,0,.7)}100%{box-shadow:0 0 0 0 rgba(233,161,18,0),0 50px 90px -35px rgba(0,0,0,.7)}}
+.start.flash{animation:formFlash 1.6s ease-out .45s 1}
 .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
 .start .done.sent{text-align:left}
 .sent-tick{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:rgba(17,160,98,.12);color:#0E8A55;margin-bottom:.9rem}
@@ -1082,7 +1084,7 @@ footer a:hover{color:#fff}
     </div>
     <div><h4>Solutions</h4><ul><li><a href="#solutions">HCM (Human Capital Management)</a></li><li><a href="#solutions">Workforce Management</a></li><li><a href="#solutions">Timekeeping</a></li><li><a href="#solutions">Scheduling</a></li><li><a href="#solutions">Accruals</a></li><li><a href="#solutions">Payroll</a></li><li><a href="#solutions">HR and Reporting</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="#promise">Our Promise</a></li><li><a href="#why">Why Us</a></li><li><a href="#method">How We Work</a></li><li><a href="#industries">Industries</a></li><li><a href="#assessment">Health Check</a></li></ul></div>
-    <div><h4>Connect</h4><ul><li><a href="#contact">Contact Us</a></li><li><span class="sel">info@thedukeforce.com</span></li><li><a href="#top">Book a Consultation</a></li></ul></div>
+    <div><h4>Connect</h4><ul><li><a href="#contact">Contact Us</a></li><li><span class="sel">info@thedukeforce.com</span></li><li><a href="#contact">Book a Consultation</a></li></ul></div>
   </div>
   <div class="wrap" aria-hidden="true"><div class="wordmark">The Duke Force</div></div>
   <div class="wrap f-bot">
@@ -1392,7 +1394,22 @@ var PHOTOS = {
   $("storyClose").addEventListener("click",closeStory);
   sv.querySelectorAll("[data-close-story]").forEach(function(b){b.addEventListener("click",closeStory);});
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&svOpen)closeStory();});
-  $("ctaStart").addEventListener("click",function(){setTimeout(function(){$("s-name").focus({preventScroll:true});},600);});
+  /* every consultation / contact link goes straight to the enquiry form */
+  function goForm(e){
+    if(e)e.preventDefault();
+    if(svOpen){closeStory();if(location.hash==="#our-story")history.replaceState(null,"",location.pathname+location.search);}
+    var f=$("startForm");
+    setTimeout(function(){
+      f.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});
+      f.classList.remove("flash");void f.offsetWidth;f.classList.add("flash");
+      setTimeout(function(){var n=$("startFields").hidden?null:$("s-name");if(n)n.focus({preventScroll:true});},reduce?0:700);
+    },svOpen?60:0);
+  }
+  document.addEventListener("click",function(e){
+    var a=e.target.closest&&e.target.closest('a[href="#contact"],#ctaStart,a[data-form]');
+    if(!a||a.id==="r-send"||/^mailto:/.test(a.getAttribute("href")||""))return;
+    goForm(e);
+  });
 
   /* start form: drafts the enquiry, never claims it was sent */
   var form=$("startForm");
