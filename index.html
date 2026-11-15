@@ -209,6 +209,152 @@ section{padding-block:clamp(4.5rem,9vw,7.5rem)}
 .result [hidden],.start [hidden]{display:none!important}
 @keyframes formFlash{0%{box-shadow:0 0 0 0 rgba(233,161,18,.0),0 50px 90px -35px rgba(0,0,0,.7)}30%{box-shadow:0 0 0 6px rgba(233,161,18,.55),0 50px 90px -35px rgba(0,0,0,.7)}100%{box-shadow:0 0 0 0 rgba(233,161,18,0),0 50px 90px -35px rgba(0,0,0,.7)}}
 .start.flash{animation:formFlash 1.6s ease-out .45s 1}
+/* v30: Careers page (#careers) */
+.cv .sv-main{position:relative}
+.cv [hidden]{display:none!important}
+.cv-wm{position:absolute;z-index:-1;right:-140px;top:-60px;width:min(620px,90vw);opacity:.07;pointer-events:none}
+.cv-wm svg{width:100%;height:auto;animation:crestSpin 160s linear infinite}
+.cv .tag{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#FFC94A;font-weight:600}
+.cv-hero{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(2rem,5vw,4.5rem);align-items:center}
+@media (max-width:960px){.cv-hero{grid-template-columns:1fr}}
+.cv-hero .sv-head{margin-bottom:0}
+.cv-grad{display:block;background:linear-gradient(95deg,#FFE3A0,#FFC94A 35%,#E9A112 55%,#FFE3A0 80%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em;animation:cvShine 7s ease-in-out infinite}
+@keyframes cvShine{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+.cv-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.9rem}
+.cv-cta .btn svg,.eoi .btn svg{width:14px;height:14px}
+.cv-facts{list-style:none;display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 0;padding:0}
+.cv-facts li{font:600 .82rem/1 var(--body);padding:.6rem .9rem;border-radius:999px;color:#DCE4FA;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.cv-facts li::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#4FE0B0;margin-right:.55rem;vertical-align:1px;box-shadow:0 0 0 3px rgba(79,224,176,.18);animation:cvPulse 2.4s ease-in-out infinite}
+@keyframes cvPulse{50%{box-shadow:0 0 0 6px rgba(79,224,176,0)}}
+.cv-how{position:relative;isolation:isolate;overflow:hidden;border-radius:24px;padding:clamp(1.4rem,3vw,2rem)}
+.cv-how::before{content:"";position:absolute;z-index:-2;left:50%;top:50%;width:170%;aspect-ratio:1;transform:translate(-50%,-50%);background:conic-gradient(from 0deg,transparent 0deg 250deg,rgba(255,201,74,.95) 305deg,transparent 345deg);animation:cvSpin 8s linear infinite}
+@keyframes cvSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.cv-how::after{content:"";position:absolute;z-index:-1;inset:1.5px;border-radius:22.5px;background:radial-gradient(120% 90% at 100% 0%,rgba(255,201,74,.13),transparent 55%),linear-gradient(160deg,#0F1D4C,#070F2E)}
+.cv-how-t{display:block;font:800 1.55rem/1.1 var(--display);font-stretch:112%;color:#fff;margin-top:.45rem}
+.cv-steps{list-style:none;margin:1.2rem 0 0;padding:0;display:grid;gap:.35rem}
+.cv-steps li{display:grid;grid-template-columns:40px 1fr;gap:.9rem;align-items:start;padding:.85rem .9rem;border-radius:14px;animation:cvStep 10s linear infinite;animation-delay:var(--d,0s)}
+.cv-steps li:nth-child(2){--d:2.5s}.cv-steps li:nth-child(3){--d:5s}.cv-steps li:nth-child(4){--d:7.5s}
+@keyframes cvStep{0%,23%{background:rgba(255,201,74,.11);box-shadow:inset 0 0 0 1px rgba(255,201,74,.38)}27%,100%{background:transparent;box-shadow:inset 0 0 0 1px transparent}}
+.cv-steps i{font-style:normal;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:800 1rem/1 var(--display);color:#1A1100;background:linear-gradient(180deg,#FFC94A,#E9A112);box-shadow:0 8px 18px -8px rgba(233,161,18,.8)}
+.cv-steps b{display:block;color:#fff;font-weight:700;line-height:1.3}
+.cv-steps span{display:block;color:#AEB9DA;font-size:.92rem;line-height:1.45;margin-top:.2rem}
+.cv-sec{margin-top:clamp(3.5rem,7vw,5.5rem);padding:0}
+.cv-shead{max-width:720px;margin-bottom:clamp(1.6rem,3vw,2.4rem)}
+.cv-h{font-size:clamp(1.9rem,3.4vw,2.8rem);font-weight:800;font-stretch:112%;letter-spacing:-.025em;line-height:1.05;color:#fff;margin-top:.55rem}
+.cv-shead p{color:#B6C1E2;margin-top:.9rem;max-width:58ch}
+.cv-rv{transform:translateY(22px);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.cv-rv.on{transform:none}
+.cv-values{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media (max-width:1000px){.cv-values{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cv-values{grid-template-columns:1fr}}
+.cv-val{padding:1.5rem;border-radius:20px;background:rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px rgba(255,255,255,.09);transition:transform .35s,box-shadow .35s,background .35s}
+.cv-val:hover{transform:translateY(-6px);background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,201,74,.45),0 24px 50px -28px rgba(0,0,0,.8)}
+.cv-val .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--c);color:#fff;box-shadow:0 12px 26px -12px var(--c)}
+.cv-val .ic svg{width:26px;height:26px}
+.cv-val h4{font-family:var(--display);font-stretch:110%;font-size:1.3rem;color:#fff;margin:1.1rem 0 0}
+.cv-val p{color:#AEB9DA;font-size:.95rem;margin-top:.5rem;line-height:1.55}
+.cv-roles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+@media (max-width:1000px){.cv-roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.cv-roles{grid-template-columns:1fr}}
+.cv-role{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:1.5rem;border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.055),rgba(255,255,255,.02));box-shadow:inset 0 0 0 1px rgba(255,255,255,.1);transition:transform .35s,box-shadow .35s}
+.cv-role::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,var(--c),transparent 80%)}
+.cv-role::after{content:"";position:absolute;right:-60px;top:-60px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,var(--c),transparent 70%);opacity:.14;transition:opacity .35s}
+.cv-role:hover{transform:translateY(-5px);box-shadow:inset 0 0 0 1px rgba(255,201,74,.42),0 26px 50px -30px rgba(0,0,0,.85)}
+.cv-role:hover::after{opacity:.3}
+.cv-role.cv-open{background:radial-gradient(120% 100% at 100% 0%,rgba(255,201,74,.12),transparent 60%),rgba(255,255,255,.02);box-shadow:inset 0 0 0 1.5px rgba(255,201,74,.35)}
+.cv-role-top{display:flex;justify-content:space-between;gap:.6rem;align-items:center;font:600 .72rem/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.cv-role-top .pr{color:var(--c2)}
+.cv-role-top .rm{color:#4FE0B0;white-space:nowrap}
+.cv-role h4{font-family:var(--display);font-stretch:108%;font-size:1.28rem;line-height:1.2;color:#fff;margin:.9rem 0 0}
+.cv-role p{color:#AEB9DA;font-size:.95rem;line-height:1.55;margin-top:.55rem;flex:1}
+.cv-tags{list-style:none;display:flex;flex-wrap:wrap;gap:.4rem;margin:1rem 0 0;padding:0}
+.cv-tags li{font-size:.78rem;font-weight:600;color:#DCE4FA;padding:.35rem .6rem;border-radius:8px;background:rgba(255,255,255,.07)}
+.cv-apply{all:unset;cursor:pointer;margin-top:1.2rem;display:inline-flex;align-items:center;gap:.45rem;font-weight:700;color:#FFC94A;font-size:.95rem;align-self:flex-start}
+.cv-apply svg{width:14px;height:14px;transition:transform .25s}
+.cv-role:hover .cv-apply svg{transform:translateX(4px)}
+.cv-apply:focus-visible{outline:3px solid #FFC94A;outline-offset:3px;border-radius:6px}
+.cv-form{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(2rem,5vw,4rem);align-items:start;padding:clamp(1.3rem,3.5vw,2.8rem);border-radius:28px;background:radial-gradient(90% 70% at 0% 0%,rgba(255,201,74,.11),transparent 60%),rgba(255,255,255,.035);box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+@media (max-width:960px){.cv-form{grid-template-columns:1fr}}
+.cv-form.flash{animation:formFlash 1.6s ease-out .3s 1}
+.cv-form-intro p{color:#B6C1E2;margin-top:.9rem}
+.cv-notes{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1rem}
+.cv-notes li{display:grid;grid-template-columns:22px 1fr;gap:.75rem;color:#C9D3EE;font-size:.95rem;line-height:1.5}
+.cv-notes svg{width:22px;height:22px;color:#FFC94A;margin-top:.1rem}
+.cv-notes b{color:#fff}
+.eoi .g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 1rem}
+@media (max-width:600px){.eoi .g{grid-template-columns:1fr}}
+.eoi .full{grid-column:1/-1}
+.eoi label:not(.consent),.eoi .lbl{display:block;font-size:.84rem;font-weight:700;color:#DCE4FA;margin-bottom:.4rem}
+.eoi em{font-style:normal;font-weight:500;color:#8F9BC0}
+.eoi input:not([type=checkbox]),.eoi select,.eoi textarea{width:100%;font:500 1rem/1.4 var(--body);padding:.85rem 1rem;border-radius:10px;border:1.5px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);color:#fff;margin-bottom:1rem;color-scheme:dark;transition:border-color .2s,box-shadow .2s}
+.eoi select option{background:#0A1438;color:#fff}
+.eoi textarea{min-height:120px;resize:vertical}
+.eoi ::placeholder{color:rgba(220,228,250,.42)}
+.eoi input:focus,.eoi select:focus,.eoi textarea:focus{outline:none;border-color:#FFC94A;box-shadow:0 0 0 4px rgba(255,201,74,.16)}
+.eoi [aria-invalid="true"]{border-color:#FF8FA8!important;box-shadow:0 0 0 4px rgba(255,143,168,.14)}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.1rem;padding:.2rem;border-radius:12px}
+.chips[aria-invalid="true"]{box-shadow:0 0 0 1.5px #FF8FA8}
+.chip-t{font:600 .86rem/1 var(--body);padding:.62rem .85rem;border-radius:999px;border:0;cursor:pointer;color:#DCE4FA;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);transition:background .2s,color .2s,transform .15s}
+.chip-t:hover{background:rgba(255,255,255,.11)}
+.chip-t:active{transform:scale(.96)}
+.chip-t[aria-pressed="true"]{color:#1A1100;background:linear-gradient(180deg,#FFC94A,#E9A112);box-shadow:none}
+.chip-t[aria-pressed="true"]::before{content:"✓ ";font-weight:800}
+.consent{display:grid;grid-template-columns:22px 1fr;gap:.75rem;align-items:start;font-size:.88rem;color:#C9D3EE;line-height:1.5;margin:.2rem 0 1.1rem;cursor:pointer}
+.consent input{width:20px;height:20px;margin:.15rem 0 0;accent-color:#E9A112}
+.eoi .err{color:#FF9DB4;font-size:.9rem;font-weight:600;margin:0 0 .9rem}
+.eoi #e-submit{width:100%}
+.eoi-done{padding:.4rem 0}
+.eoi-done .sent-tick{background:rgba(79,224,176,.14);color:#4FE0B0}
+.eoi-done h4{font-family:var(--display);font-stretch:110%;font-size:clamp(1.6rem,3vw,2.2rem);color:#fff;margin:.55rem 0 0}
+.eoi-done p{color:#C9D3EE;margin:.8rem 0 1.4rem}
+.eoi-done b{color:#fff}
+.eoi-msg{white-space:pre-wrap;font:500 .85rem/1.5 var(--mono);color:#DCE4FA;background:rgba(255,255,255,.05);border-radius:12px;padding:1rem;max-height:260px;overflow:auto;margin:0 0 1rem}
+.d-story.d-careers{margin-top:.7rem;background:radial-gradient(120% 120% at 100% 0%,rgba(79,224,176,.2),transparent 60%),#050B22}
+
+/* v30: Five trees for every go-live */
+.pledge{--leaf:#17734F;position:relative;overflow:hidden;isolation:isolate;background:var(--bg-2)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .pledge{--leaf:#5FD3A0}}
+:root[data-theme="dark"] .pledge{--leaf:#5FD3A0}
+.pledge::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(55% 70% at 88% 40%,rgba(46,139,102,.18),transparent 70%),radial-gradient(40% 50% at 5% 100%,rgba(233,161,18,.10),transparent 70%)}
+.pl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+@media (max-width:900px){.pl-grid{grid-template-columns:1fr}}
+.pledge .pl-eye{color:var(--leaf)}
+.pledge h2 span{display:block;background:linear-gradient(95deg,var(--leaf),#2E8B66 45%,#C9A13B);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.pl-txt > p{color:var(--ink-2);margin-top:1rem;font-size:1.06rem;max-width:58ch}
+.pl-txt > p.pl-lead{color:var(--ink);font-size:1.22rem;font-weight:600;line-height:1.5;margin-top:1.3rem}
+.pl-points{list-style:none;margin:1.8rem 0 0;padding:0;display:grid;gap:.75rem}
+.pl-points li{display:grid;grid-template-columns:46px 1fr;gap:.95rem;align-items:center;padding:.95rem 1.1rem;border-radius:16px;background:var(--surface);box-shadow:var(--shadow),0 0 0 1px var(--line);transition:transform .3s}
+.pl-points li:hover{transform:translateX(6px)}
+.pl-points i{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(46,139,102,.14);color:var(--leaf)}
+.pl-points i svg{width:24px;height:24px}
+.pl-points b{display:block;color:var(--ink);line-height:1.3}
+.pl-points span{display:block;color:var(--ink-2);font-size:.94rem;line-height:1.5;margin-top:.1rem}
+.pl-sign{margin-top:1.7rem;font-family:var(--display);font-stretch:106%;font-weight:700;font-size:1.14rem;line-height:1.45;color:var(--ink);border-left:3px solid #C9A13B;padding-left:1.1rem;max-width:52ch}
+.pl-sign .qm{color:#C9A13B;font-weight:900}
+.pl-sign small{display:block;font:600 .76rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);margin-top:.65rem}
+.pl-art{position:relative;border-radius:28px;overflow:hidden;background:radial-gradient(80% 60% at 75% 30%,#123F3A,transparent 70%),linear-gradient(180deg,#071C24 0%,#0B2D2C 55%,#0B3D2E 100%);box-shadow:0 40px 80px -40px rgba(4,30,22,.8),0 0 0 1px rgba(201,161,59,.25)}
+.pl-scene{width:100%;height:auto;aspect-ratio:600/480}
+.pl-scene .sun{transform-box:fill-box;transform-origin:center;animation:plSun 6s ease-in-out infinite}
+@keyframes plSun{50%{transform:scale(1.07);opacity:.92}}
+.pl-scene .st{animation:plTw 3.6s ease-in-out infinite;animation-delay:var(--t)}
+@keyframes plTw{50%{opacity:.25}}
+.pl-scene .sap{transform-box:fill-box;transform-origin:50% 100%}
+.pl-scene .sw{transform-box:fill-box;transform-origin:50% 100%;animation:plSway var(--d) ease-in-out infinite alternate}
+@keyframes plSway{from{transform:rotate(-2.2deg)}to{transform:rotate(2.2deg)}}
+.pl-ready .pl-scene .sap{transform:scale(0)}
+.pl-ready.grow .pl-scene .sap{animation:plGrow 1.15s cubic-bezier(.2,.9,.3,1.18) forwards;animation-delay:calc(var(--i) * .3s + .15s)}
+@keyframes plGrow{from{transform:scale(0)}to{transform:scale(1)}}
+.pl-scene .fl{opacity:0;transform:translate(var(--x),40px);animation:plFloat 13s linear infinite;animation-delay:var(--f)}
+@keyframes plFloat{0%{opacity:0;transform:translate(var(--x),60px) rotate(0)}10%{opacity:.85}70%{opacity:.6}100%{opacity:0;transform:translate(calc(var(--x) + 90px),300px) rotate(260deg)}}
+.pl-tag{position:absolute;top:1.1rem;right:1.1rem;display:inline-flex;align-items:center;gap:.45rem;font:600 .72rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#E8FBEF;padding:.55rem .8rem;border-radius:999px;background:rgba(4,22,16,.5);box-shadow:inset 0 0 0 1px rgba(127,224,170,.35);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.pl-tag svg{width:15px;height:15px;color:#7BE0A8}
+.pl-chip{position:absolute;left:1.1rem;bottom:1.1rem;display:flex;align-items:center;gap:.8rem;max-width:min(300px,calc(100% - 2.2rem));padding:.75rem 1rem .75rem .9rem;border-radius:16px;background:rgba(4,20,14,.6);box-shadow:inset 0 0 0 1px rgba(201,161,59,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#E8FBEF}
+.pl-chip b{font:900 2.4rem/1 var(--display);font-stretch:112%;background:linear-gradient(180deg,#FFE3A0,#E9A112);-webkit-background-clip:text;background-clip:text;color:transparent;min-width:1.1ch;text-align:center}
+.pl-chip span{font-size:.86rem;font-weight:600;line-height:1.35}
+@media (max-width:480px){.pl-tag{top:.7rem;right:.7rem;font-size:.64rem}.pl-chip{left:.7rem;bottom:.7rem;padding:.55rem .75rem}.pl-chip b{font-size:1.9rem}.pl-chip span{font-size:.78rem}}
+.proof a.pl-link{color:inherit;text-decoration:none;border-bottom:1px dashed rgba(127,224,170,.6)}
+.proof a.pl-link:hover{color:#BDF3D6}
+.proof svg.leaf{color:#5FD3A0}
 .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
 .start .done.sent{text-align:left}
 .sent-tick{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:rgba(17,160,98,.12);color:#0E8A55;margin-bottom:.9rem}
@@ -652,6 +798,7 @@ footer a:hover{color:#fff}
   <div class="wrap">
     <span><b>Defined by You. <span class="gold">Executed by Us.</span></b><span class="motto-sub">&nbsp;&nbsp;UKG Ready® HCM &amp; Workforce Management specialists</span></span>
     <div class="util-r">
+      <a class="hide-s" href="#careers">Careers</a>
       <a class="hide-s" href="#assessment">Free health check</a>
       <span class="hide-s sel">info@thedukeforce.com</span>
       <a href="#contact"><b>Contact Us</b></a>
@@ -710,6 +857,7 @@ footer a:hover{color:#fff}
     <a href="#assessment">Health Check</a>
     <a href="#faq">FAQ</a>
     <a class="d-story" href="#our-story"><span class="ic"><svg class="laurel" viewBox="0 0 140 92" aria-hidden="true" focusable="false"><path fill="none" stroke="#FFC94A" stroke-width="1.5" stroke-linecap="round" d="M62.5,79.2A36,36 0 0 1 45.9,17.2M77.5,79.2A36,36 0 0 0 94.1,17.2"/><g fill="#FFC94A" fill-opacity=".92"><ellipse cx="61.4" cy="84.3" rx="3.6" ry="8.6" transform="rotate(250 61.4 84.3)"/><ellipse cx="54.6" cy="70.7" rx="3.4" ry="8.2" transform="rotate(332 54.6 70.7)"/><ellipse cx="39.4" cy="71.6" rx="3.2" ry="7.7" transform="rotate(286 39.4 71.6)"/><ellipse cx="41.9" cy="56.5" rx="3.1" ry="7.3" transform="rotate(368 41.9 56.5)"/><ellipse cx="29" cy="48.3" rx="2.9" ry="6.9" transform="rotate(322 29 48.3)"/><ellipse cx="39.9" cy="37.6" rx="2.7" ry="6.4" transform="rotate(404 39.9 37.6)"/><ellipse cx="34.3" cy="23.4" rx="2.5" ry="6" transform="rotate(358 34.3 23.4)"/><ellipse cx="49.4" cy="21.1" rx="2.3" ry="5.6" transform="rotate(440 49.4 21.1)"/><ellipse cx="78.6" cy="84.3" rx="3.6" ry="8.6" transform="rotate(110 78.6 84.3)"/><ellipse cx="85.4" cy="70.7" rx="3.4" ry="8.2" transform="rotate(28 85.4 70.7)"/><ellipse cx="100.6" cy="71.6" rx="3.2" ry="7.7" transform="rotate(74 100.6 71.6)"/><ellipse cx="98.1" cy="56.5" rx="3.1" ry="7.3" transform="rotate(-8 98.1 56.5)"/><ellipse cx="111" cy="48.3" rx="2.9" ry="6.9" transform="rotate(38 111 48.3)"/><ellipse cx="100.1" cy="37.6" rx="2.7" ry="6.4" transform="rotate(-44 100.1 37.6)"/><ellipse cx="105.7" cy="23.4" rx="2.5" ry="6" transform="rotate(2 105.7 23.4)"/><ellipse cx="90.6" cy="21.1" rx="2.3" ry="5.6" transform="rotate(-80 90.6 21.1)"/></g><path fill="#FFC94A" d="M70,58C70,58 60.5,51.5 60.5,45.8A4.9,4.9 0 0 1 70,43.6A4.9,4.9 0 0 1 79.5,45.8C79.5,51.5 70,58 70,58Z"/></svg></span><span><b>Our Story</b><small>Meet Duke, and a thank-you to Mom &amp; Dad</small></span></a>
+    <a class="d-story d-careers" href="#careers"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" stroke="#FFC94A" width="26" height="26"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0110 4h4a1.5 1.5 0 011.5 1.5V7M3 12.5h18"/></svg></span><span><b>Careers</b><small>Join our UKG Ready team: express your interest</small></span></a>
     <a class="btn btn-gold" href="#contact">Book a Consultation</a>
   </div>
 </div>
@@ -735,6 +883,7 @@ footer a:hover{color:#fff}
         <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="7" r="3.2"/><path d="M3.5 17.5c1.2-3.2 3.6-4.8 6.5-4.8s5.3 1.6 6.5 4.8"/></svg>Senior-led projects</li>
         <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="4.5" width="15" height="11" rx="2.5"/><path d="M6.5 10l2.4 2.2L13.5 7.8"/></svg>Parallel-tested payroll</li>
         <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10" cy="10" r="7.5"/><path d="M10 5.5V10l3 2"/></svg>HCM + Workforce Management in one system</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="leaf"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19c3.5-4.5 6.5-7 10-9"/></svg><a class="pl-link" href="#pledge">5 trees planted for every go-live</a></li>
       </ul>
     </div>
 
@@ -911,11 +1060,34 @@ footer a:hover{color:#fff}
       <li data-g="You define" style="--nc:#2456FF;--gc:#7FA0FF"><span class="node">2</span><div class="wk">WEEKS 2–4</div><h3>Design</h3><p>Workshops with HR, payroll and operations to document every HCM and Workforce Management rule, policy and approval flow.</p><div class="dl"><span>Config workbook</span><span>Sign-off</span></div></li>
       <li data-g="We execute" style="--nc:#00A99D;--gc:#4FE0D2"><span class="node">3</span><div class="wk">WEEKS 4–8</div><h3>Configure</h3><p>Pay rules, accruals, schedules, payroll, security and reports, plus data conversion.</p><div class="dl"><span>Built system</span><span>Data load</span></div></li>
       <li data-g="We execute" style="--nc:#00A99D;--gc:#4FE0D2"><span class="node">4</span><div class="wk">WEEKS 8–11</div><h3>Test</h3><p>Scenario timecards, user testing and parallel payrolls until every variance is explained.</p><div class="dl"><span>Test scripts</span><span>Parallels</span></div></li>
-      <li data-g="We execute" style="--nc:#E9A112;--gc:#FFC94A"><span class="node">5</span><div class="wk">WEEK 12+</div><h3>Go live</h3><p>Cutover and first live payrolls with us beside you, then training and full documentation.</p><div class="dl"><span>Cutover</span><span>Hypercare</span></div></li>
+      <li data-g="We execute" style="--nc:#E9A112;--gc:#FFC94A"><span class="node">5</span><div class="wk">WEEK 12+</div><h3>Go live</h3><p>Cutover and first live payrolls with us beside you, then training, full documentation and five trees planted in your name.</p><div class="dl"><span>Cutover</span><span>Hypercare</span></div></li>
     </ol>
     <div class="method-foot">
       <span>Typical timeline for a mid-size organization. Scope, states and data quality shape the final plan.</span>
       <a class="btn btn-gold" href="#contact">Plan your implementation</a>
+    </div>
+  </div>
+</section>
+
+<!-- PLEDGE: five trees for every go-live -->
+<section id="pledge" class="pledge">
+  <div class="wrap pl-grid">
+    <div class="pl-txt reveal">
+      <div class="eyebrow pl-eye">Our pledge to the planet</div>
+      <h2>Five trees for <span>every go-live.</span></h2>
+      <p class="pl-lead">When your UKG Ready system goes live, we plant five tree saplings in your organization's name.</p>
+      <p>It is a small gesture, and we know it. But a partnership that begins with a successful launch deserves to keep growing long after the project ends. Moving timecards, schedules and pay slips into UKG Ready already saves paper. The trees are our quiet way of giving a little more back, for cleaner air and a healthier earth.</p>
+      <ul class="pl-points">
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-4 3-7 8-7 0 4-3 7-8 7z"/><path d="M12 15.5c0-3-2.5-5.5-7-5.5 0 3 2.5 5.5 7 5.5z"/></svg></i><div><b>Planted in your name</b><span>Five saplings for every client that goes live with us.</span></div></li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0113 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></i><div><b>Shared with you</b><span>We let you know where your trees are planted, with a photo of your saplings.</span></div></li>
+        <li><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9S14.5 18.3 12 21c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg></i><div><b>For a healthier earth</b><span>Every tree takes in carbon dioxide for years to come. A small step, taken together.</span></div></li>
+      </ul>
+      <p class="pl-sign"><span class="qm">“</span>We can't undo every footprint. But we can plant something that outlives the project.<span class="qm">”</span><small>The Duke Force</small></p>
+    </div>
+    <div class="pl-art reveal" id="plArt">
+      <svg class="pl-scene" viewBox="0 0 600 480" focusable="false" aria-hidden="true"><defs><radialGradient id="plSun"><stop offset="0" stop-color="#FFD98A" stop-opacity=".55"/><stop offset=".45" stop-color="#E9A112" stop-opacity=".16"/><stop offset="1" stop-color="#E9A112" stop-opacity="0"/></radialGradient><linearGradient id="plLeafA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9BF0BF"/><stop offset="1" stop-color="#2E8B66"/></linearGradient><linearGradient id="plLeafB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6FD49C"/><stop offset="1" stop-color="#1F6B4C"/></linearGradient><linearGradient id="plHillA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1A5B42"/><stop offset="1" stop-color="#0E3A2B"/></linearGradient><linearGradient id="plHillB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#23754F"/><stop offset="1" stop-color="#11402F"/></linearGradient></defs><circle class="st" cx="281" cy="109" r="1.9" fill="#FFE3A0" style="--t:3.8s"/><circle class="st" cx="562" cy="25" r="1.5" fill="#FFE3A0" style="--t:3.1s"/><circle class="st" cx="275" cy="184" r="1.2" fill="#FFE3A0" style="--t:3.6s"/><circle class="st" cx="135" cy="113" r="1.5" fill="#FFE3A0" style="--t:3.5s"/><circle class="st" cx="409" cy="157" r="1.2" fill="#FFE3A0" style="--t:2.3s"/><circle class="st" cx="33" cy="73" r="1.5" fill="#FFE3A0" style="--t:1.1s"/><circle class="st" cx="418" cy="58" r="1.2" fill="#FFE3A0" style="--t:0.6s"/><circle class="st" cx="475" cy="50" r="1.2" fill="#FFE3A0" style="--t:0.0s"/><circle class="st" cx="25" cy="71" r="1.2" fill="#FFE3A0" style="--t:3.8s"/><circle class="st" cx="189" cy="60" r="1.5" fill="#FFE3A0" style="--t:1.3s"/><circle class="st" cx="223" cy="156" r="1.9" fill="#FFE3A0" style="--t:2.5s"/><circle class="st" cx="206" cy="68" r="1.5" fill="#FFE3A0" style="--t:1.2s"/><circle class="st" cx="389" cy="124" r="1.2" fill="#FFE3A0" style="--t:3.7s"/><circle class="st" cx="290" cy="34" r="1.5" fill="#FFE3A0" style="--t:1.2s"/><circle class="st" cx="23" cy="170" r="1.9" fill="#FFE3A0" style="--t:2.8s"/><circle class="st" cx="87" cy="97" r="1.5" fill="#FFE3A0" style="--t:3.3s"/><circle cx="455" cy="170" r="170" fill="url(#plSun)"/><circle class="sun" cx="455" cy="170" r="40" fill="#FFC94A"/><circle cx="455" cy="170" r="40" fill="none" stroke="#FFE3A0" stroke-opacity=".5" stroke-width="2"/><path d="M0 318C110 270 210 292 318 312S520 278 600 300V480H0Z" fill="url(#plHillA)"/><path d="M0 372C130 340 250 352 356 360S520 338 600 348V480H0Z" fill="url(#plHillB)"/><path d="M40 392q2 -10 5 -14M44 392q1 -7 -2 -11" stroke="#2E8B66" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/><path d="M150 378q2 -10 5 -14M154 378q1 -7 -2 -11" stroke="#2E8B66" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/><path d="M250 380q2 -10 5 -14M254 380q1 -7 -2 -11" stroke="#2E8B66" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/><path d="M350 376q2 -10 5 -14M354 376q1 -7 -2 -11" stroke="#2E8B66" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/><path d="M455 372q2 -10 5 -14M459 372q1 -7 -2 -11" stroke="#2E8B66" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/><path d="M560 370q2 -10 5 -14M564 370q1 -7 -2 -11" stroke="#2E8B66" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/><path d="M90 420q2 -10 5 -14M94 420q1 -7 -2 -11" stroke="#2E8B66" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/><path d="M520 410q2 -10 5 -14M524 410q1 -7 -2 -11" stroke="#2E8B66" stroke-width="2" fill="none" stroke-linecap="round" opacity=".8"/><path class="fl" style="--f:0.0s;--x:70px" d="M0 0C4 -5 12 -5 16 0C12 4 4 4 0 0Z" fill="#7BE0A8"/><path class="fl" style="--f:2.6s;--x:210px" d="M0 0C4 -5 12 -5 16 0C12 4 4 4 0 0Z" fill="#7BE0A8"/><path class="fl" style="--f:5.2s;--x:330px" d="M0 0C4 -5 12 -5 16 0C12 4 4 4 0 0Z" fill="#7BE0A8"/><path class="fl" style="--f:7.8s;--x:460px" d="M0 0C4 -5 12 -5 16 0C12 4 4 4 0 0Z" fill="#7BE0A8"/><path class="fl" style="--f:10.4s;--x:540px" d="M0 0C4 -5 12 -5 16 0C12 4 4 4 0 0Z" fill="#7BE0A8"/><g transform="translate(95 372) scale(0.82)"><ellipse cx="0" cy="3" rx="30" ry="7" fill="#5B3B1F"/><ellipse cx="0" cy="1" rx="22" ry="4" fill="#7A5230"/><g class="sap" style="--i:0"><g class="sw" style="--d:3.40s"><path d="M0 0C-2 -28 3 -56 0 -96" stroke="#3E7A47" stroke-width="4.5" fill="none" stroke-linecap="round"/><g class="lf" transform="translate(0 -34) rotate(-22) scale(0.9)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -34) rotate(202) scale(0.9 -0.9)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf" transform="translate(0 -60) rotate(-30) scale(1.0)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -60) rotate(210) scale(1.0 -1.0)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf" transform="translate(0 -86) rotate(-52) scale(0.85)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -86) rotate(232) scale(0.85 -0.85)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><path class="lf" d="M0 -96C-6 -110 -2 -124 0 -130C2 -124 6 -110 0 -96Z" fill="url(#plLeafA)"/></g></g></g><g transform="translate(195 362) scale(0.95)"><ellipse cx="0" cy="3" rx="30" ry="7" fill="#5B3B1F"/><ellipse cx="0" cy="1" rx="22" ry="4" fill="#7A5230"/><g class="sap" style="--i:1"><g class="sw" style="--d:3.85s"><path d="M0 0C-2 -28 3 -56 0 -96" stroke="#3E7A47" stroke-width="4.5" fill="none" stroke-linecap="round"/><g class="lf" transform="translate(0 -34) rotate(-22) scale(0.9)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -34) rotate(202) scale(0.9 -0.9)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf" transform="translate(0 -60) rotate(-30) scale(1.0)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -60) rotate(210) scale(1.0 -1.0)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf" transform="translate(0 -86) rotate(-52) scale(0.85)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -86) rotate(232) scale(0.85 -0.85)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><path class="lf" d="M0 -96C-6 -110 -2 -124 0 -130C2 -124 6 -110 0 -96Z" fill="url(#plLeafA)"/></g></g></g><g transform="translate(300 360) scale(1.12)"><ellipse cx="0" cy="3" rx="30" ry="7" fill="#5B3B1F"/><ellipse cx="0" cy="1" rx="22" ry="4" fill="#7A5230"/><g class="sap" style="--i:2"><g class="sw" style="--d:4.30s"><path d="M0 0C-2 -28 3 -56 0 -96" stroke="#3E7A47" stroke-width="4.5" fill="none" stroke-linecap="round"/><g class="lf" transform="translate(0 -34) rotate(-22) scale(0.9)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -34) rotate(202) scale(0.9 -0.9)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf" transform="translate(0 -60) rotate(-30) scale(1.0)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -60) rotate(210) scale(1.0 -1.0)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf" transform="translate(0 -86) rotate(-52) scale(0.85)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -86) rotate(232) scale(0.85 -0.85)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><path class="lf" d="M0 -96C-6 -110 -2 -124 0 -130C2 -124 6 -110 0 -96Z" fill="url(#plLeafA)"/></g></g><g transform="translate(18 -6)"><path d="M0 0V-34" stroke="#C9A13B" stroke-width="2"/><rect x="-2" y="-52" width="58" height="20" rx="4" fill="#F7F2E8" stroke="#C9A13B" stroke-width="1.5"/><text x="27" y="-38.5" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="700" fill="#0B3D2E" letter-spacing=".5">YOUR NAME</text></g></g><g transform="translate(405 358) scale(0.95)"><ellipse cx="0" cy="3" rx="30" ry="7" fill="#5B3B1F"/><ellipse cx="0" cy="1" rx="22" ry="4" fill="#7A5230"/><g class="sap" style="--i:3"><g class="sw" style="--d:4.75s"><path d="M0 0C-2 -28 3 -56 0 -96" stroke="#3E7A47" stroke-width="4.5" fill="none" stroke-linecap="round"/><g class="lf" transform="translate(0 -34) rotate(-22) scale(0.9)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -34) rotate(202) scale(0.9 -0.9)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf" transform="translate(0 -60) rotate(-30) scale(1.0)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -60) rotate(210) scale(1.0 -1.0)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf" transform="translate(0 -86) rotate(-52) scale(0.85)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -86) rotate(232) scale(0.85 -0.85)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><path class="lf" d="M0 -96C-6 -110 -2 -124 0 -130C2 -124 6 -110 0 -96Z" fill="url(#plLeafA)"/></g></g></g><g transform="translate(505 352) scale(0.82)"><ellipse cx="0" cy="3" rx="30" ry="7" fill="#5B3B1F"/><ellipse cx="0" cy="1" rx="22" ry="4" fill="#7A5230"/><g class="sap" style="--i:4"><g class="sw" style="--d:5.20s"><path d="M0 0C-2 -28 3 -56 0 -96" stroke="#3E7A47" stroke-width="4.5" fill="none" stroke-linecap="round"/><g class="lf" transform="translate(0 -34) rotate(-22) scale(0.9)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -34) rotate(202) scale(0.9 -0.9)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf" transform="translate(0 -60) rotate(-30) scale(1.0)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -60) rotate(210) scale(1.0 -1.0)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf" transform="translate(0 -86) rotate(-52) scale(0.85)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafA)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><g class="lf lf-l" transform="translate(0 -86) rotate(232) scale(0.85 -0.85)"><path d="M0 0C9 -11 27 -12 38 0C27 9 9 9 0 0Z" fill="url(#plLeafB)"/><path d="M2 0H30" stroke="#0F4A35" stroke-width="1.2" opacity=".45"/></g><path class="lf" d="M0 -96C-6 -110 -2 -124 0 -130C2 -124 6 -110 0 -96Z" fill="url(#plLeafA)"/></g></g></g></svg>
+      <span class="pl-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="leaf"><path d="M5 19c0-8 6-14 15-14 0 9-6 15-14 15"/><path d="M5 19c3.5-4.5 6.5-7 10-9"/></svg>Growing with our clients</span>
+      <div class="pl-chip"><b id="plCount">5</b><span>saplings planted in your name, for every go-live</span></div>
     </div>
   </div>
 </section>
@@ -1075,6 +1247,109 @@ footer a:hover{color:#fff}
   </div>
 </div>
 
+<!-- CAREERS: its own page, opened from the menu and footer (#careers) -->
+<div class="story-view cv" id="careersView" role="dialog" aria-modal="true" aria-labelledby="careersT" hidden>
+  <div class="sv-bar">
+    <div class="wrap sv-row">
+      <span class="sv-brand mk-dark"><svg class="mk" viewBox="0 0 220 220" aria-hidden="true" focusable="false"><use href="#ls-mark"/></svg><svg class="wd" viewBox="0 0 1782.91 112.21" aria-hidden="true" focusable="false"><use href="#ls-wordh"/></svg></span>
+      <button type="button" class="sv-close">Back to site <span aria-hidden="true">×</span></button>
+    </div>
+  </div>
+  <div class="sv-main on-dark">
+    <span class="cv-wm mk-dark" aria-hidden="true"><svg viewBox="0 0 220 220" focusable="false"><use href="#ls-mark"/></svg></span>
+    <div class="wrap">
+      <div class="cv-hero">
+        <header class="sv-head">
+          <div class="eyebrow">Careers at The Duke Force</div>
+          <h2 id="careersT">Do the work you're <span class="cv-grad">proud to sign.</span></h2>
+          <p>We are a small, senior team of UKG Ready HCM and Workforce Management specialists. We don't hire in bulk, and we never stop looking for consultants who care about getting every timecard, accrual and paycheck right.</p>
+          <div class="cv-cta"><button type="button" class="btn btn-gold" data-jump="eoi">Express your interest <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><button type="button" class="btn btn-ghost" data-jump="practices">See our practices</button></div>
+          <ul class="cv-facts"><li>Remote-first</li><li>India &amp; worldwide</li><li>Full-time or contract</li></ul>
+        </header>
+        <div class="cv-how" aria-labelledby="howT">
+          <span class="tag">Expression of interest</span>
+          <b class="cv-how-t" id="howT">How it works</b>
+          <ol class="cv-steps">
+            <li><i>1</i><div><b>Share your story</b><span>Your UKG Ready experience, a link to your CV and what you want next.</span></div></li>
+            <li><i>2</i><div><b>We read every profile</b><span>A senior consultant reviews yours personally, never a keyword filter.</span></div></li>
+            <li><i>3</i><div><b>We reach out when it fits</b><span>When your experience matches a current or upcoming project, we contact you.</span></div></li>
+            <li><i>4</i><div><b>Kept on file for 12 months</b><span>No match yet? Your profile stays with us for future projects.</span></div></li>
+          </ol>
+        </div>
+      </div>
+
+      <section class="cv-sec" aria-labelledby="valT">
+        <div class="cv-shead cv-rv"><span class="tag">What we value</span><h3 class="cv-h" id="valT">The Duke Force way</h3><p>Our motto is Defined by You, Executed by Us. These four values are how we keep that promise on every project.</p></div>
+        <div class="cv-values"><article class="cv-val cv-rv" style="--c:#2456FF"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h16"/><path d="M14.5 4.5l5 5L9 20H4v-5z"/></svg></span><h4>Ownership</h4><p>Your name is on every rule you build. We test our work as if our own pay depended on it.</p></article><article class="cv-val cv-rv" style="--c:#00A99D"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span><h4>Precision</h4><p>On payroll, a rounding rule or a missed accrual is somebody's rent. The details are the job.</p></article><article class="cv-val cv-rv" style="--c:#E9A112"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></svg></span><h4>Clarity</h4><p>We explain UKG Ready in plain words, so every client understands and owns their system.</p></article><article class="cv-val cv-rv" style="--c:#F04E74"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg></span><h4>Care</h4><p>Behind every timecard is a person. We stay patient, kind and honest, with clients and with each other.</p></article></div>
+      </section>
+
+      <section class="cv-sec" id="practices" aria-labelledby="pracT">
+        <div class="cv-shead cv-rv"><span class="tag">Expressions of interest · open now</span><h3 class="cv-h" id="pracT">Where you could fit</h3><p>We hire as projects arrive. Tell us which practice suits you, and we will contact you when the right project starts.</p></div>
+        <div class="cv-roles"><article class="cv-role cv-rv" style="--c:#00A99D;--c2:#4FE0D2"><div class="cv-role-top"><span class="pr">Workforce Management practice</span><span class="rm">Remote</span></div><h4>UKG Ready Workforce Management Consultant</h4><p>Timekeeping, pay rules, accruals, Scheduler and attestation, designed, configured and tested end to end.</p><ul class="cv-tags"><li>2+ years UKG Ready</li><li>Timekeeping</li><li>Accruals</li></ul><button type="button" class="cv-apply" data-jump="eoi" data-role="UKG Ready Workforce Management Consultant">Express interest <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></article><article class="cv-role cv-rv" style="--c:#2456FF;--c2:#8FAAFF"><div class="cv-role-top"><span class="pr">HCM practice</span><span class="rm">Remote</span></div><h4>UKG Ready HCM &amp; Payroll Consultant</h4><p>Payroll setup, tax, HR, onboarding and benefits, carried through parallel payrolls to a clean go-live.</p><ul class="cv-tags"><li>2+ years UKG Ready</li><li>Payroll</li><li>HR &amp; Onboarding</li></ul><button type="button" class="cv-apply" data-jump="eoi" data-role="UKG Ready HCM & Payroll Consultant">Express interest <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></article><article class="cv-role cv-rv" style="--c:#6A3DF0;--c2:#B39BFF"><div class="cv-role-top"><span class="pr">Technology practice</span><span class="rm">Remote</span></div><h4>UKG Ready Reporting &amp; Integrations Specialist</h4><p>Custom reports, dashboards, imports, exports and API integrations that keep data moving cleanly.</p><ul class="cv-tags"><li>Reporting</li><li>Integrations</li><li>SQL or APIs a plus</li></ul><button type="button" class="cv-apply" data-jump="eoi" data-role="UKG Ready Reporting & Integrations Specialist">Express interest <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></article><article class="cv-role cv-rv" style="--c:#E9A112;--c2:#FFC94A"><div class="cv-role-top"><span class="pr">Delivery practice</span><span class="rm">Remote</span></div><h4>HCM Implementation Project Manager</h4><p>Plans, risks, testing and cutover for UKG Ready projects, keeping clients informed and on schedule.</p><ul class="cv-tags"><li>HCM projects</li><li>US clients</li><li>Cutover</li></ul><button type="button" class="cv-apply" data-jump="eoi" data-role="HCM Implementation Project Manager">Express interest <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></article><article class="cv-role cv-rv" style="--c:#F04E74;--c2:#FF9DB4"><div class="cv-role-top"><span class="pr">Enablement practice</span><span class="rm">Remote</span></div><h4>Change Management &amp; Training Consultant</h4><p>Training plans, user guides and train-the-trainer sessions that help every manager and employee adopt UKG Ready.</p><ul class="cv-tags"><li>Training</li><li>Documentation</li><li>Adoption</li></ul><button type="button" class="cv-apply" data-jump="eoi" data-role="Change Management & Training Consultant">Express interest <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></article><article class="cv-role cv-rv" style="--c:#2E8B66;--c2:#5FD3A0"><div class="cv-role-top"><span class="pr">Early careers practice</span><span class="rm">Remote</span></div><h4>Associate Consultant</h4><p>Graduates in MCA, BCA, B.Tech or HR who want to learn UKG Ready alongside senior consultants.</p><ul class="cv-tags"><li>0 to 2 years</li><li>Mentored</li><li>HR technology</li></ul><button type="button" class="cv-apply" data-jump="eoi" data-role="Associate Consultant">Express interest <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></article><article class="cv-role cv-open cv-rv" style="--c:#FFC94A;--c2:#FFC94A"><div class="cv-role-top"><span class="pr">Open application</span><span class="rm">Remote</span></div><h4>Don't see your role?</h4><p>If you know UKG Ready and care about doing it right, we would still like to hear how you could contribute.</p><button type="button" class="cv-apply" data-jump="eoi" data-role="Other / open application">Tell us about you <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></article></div>
+      </section>
+
+      <section class="cv-sec" id="eoi" aria-labelledby="eoiT">
+        <div class="cv-form" id="eoiPanel">
+          <div class="cv-form-intro">
+            <span class="tag">Expression of interest</span>
+            <h3 class="cv-h" id="eoiT">Tell us about you.</h3>
+            <p>Do it your way: a few lines, a longer letter, a portfolio or a short video link. We read every one.</p>
+            <ul class="cv-notes">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.4l2.7 2.6L16 9.6"/></svg><span>We reply when there is a fit. If you don't hear from us, there simply isn't a matching project yet, and your profile stays on file for 12 months.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.4l2.7 2.6L16 9.6"/></svg><span>Share a link to your CV on Google Drive, OneDrive or Dropbox, set to "anyone with the link". Prefer email? Send your CV to <b class="sel">info@thedukeforce.com</b>.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.4l2.7 2.6L16 9.6"/></svg><span>Your details are used only for recruitment at The Duke Force. We never share or sell them.</span></li>
+            </ul>
+          </div>
+          <form class="eoi" id="eoiForm" novalidate>
+            <div id="eoiFields">
+              <div class="g">
+                <div><label for="e-name">Full name</label><input id="e-name" autocomplete="name" placeholder="Priya Sharma"></div>
+                <div><label for="e-email">Email</label><input id="e-email" type="email" autocomplete="email" placeholder="name@email.com"></div>
+                <div><label for="e-phone">Phone <em>(optional)</em></label><input id="e-phone" type="tel" autocomplete="tel" placeholder="+91 98765 43210"></div>
+                <div><label for="e-loc">Where are you based?</label><input id="e-loc" autocomplete="address-level2" placeholder="City, country"></div>
+                <div class="full"><label for="e-role">Role you're interested in</label><select id="e-role"><option value="">Choose a practice</option><option>UKG Ready Workforce Management Consultant</option><option>UKG Ready HCM &amp; Payroll Consultant</option><option>UKG Ready Reporting &amp; Integrations Specialist</option><option>HCM Implementation Project Manager</option><option>Change Management &amp; Training Consultant</option><option>Associate Consultant</option><option>Other / open application</option></select></div>
+                <div class="full"><span class="lbl" id="e-modsL">UKG Ready modules you've worked on <em>(choose all that apply)</em></span><div class="chips" id="e-mods" role="group" aria-labelledby="e-modsL"><button type="button" class="chip-t" aria-pressed="false">Timekeeping</button><button type="button" class="chip-t" aria-pressed="false">Pay rules</button><button type="button" class="chip-t" aria-pressed="false">Accruals &amp; PTO</button><button type="button" class="chip-t" aria-pressed="false">Scheduler</button><button type="button" class="chip-t" aria-pressed="false">Attestation</button><button type="button" class="chip-t" aria-pressed="false">Payroll</button><button type="button" class="chip-t" aria-pressed="false">HR &amp; Onboarding</button><button type="button" class="chip-t" aria-pressed="false">Benefits</button><button type="button" class="chip-t" aria-pressed="false">Performance</button><button type="button" class="chip-t" aria-pressed="false">Reporting</button><button type="button" class="chip-t" aria-pressed="false">Integrations</button><button type="button" class="chip-t" aria-pressed="false">Data migration</button><button type="button" class="chip-t" aria-pressed="false">None yet</button></div></div>
+                <div><label for="e-yrs">Years of UKG Ready experience</label><select id="e-yrs"><option value="">Choose</option><option>Less than 1 year</option><option>1 to 2 years</option><option>2 to 4 years</option><option>4 to 7 years</option><option>7+ years</option></select></div>
+                <div><label for="e-avail">Available to start</label><select id="e-avail"><option>Immediately</option><option>Within 15 days</option><option selected>Within 30 days</option><option>Within 60 days</option><option>Later, just exploring</option></select></div>
+                <div><label for="e-type">Preferred engagement</label><select id="e-type"><option>Full-time</option><option>Contract or freelance</option><option selected>Either</option></select></div>
+                <div><label for="e-pay">Expected compensation <em>(optional)</em></label><input id="e-pay" placeholder="e.g. ₹18 LPA or $40/hr"></div>
+                <div class="full"><label for="e-cv">Link to your CV</label><input id="e-cv" type="url" inputmode="url" placeholder="https://drive.google.com/…"></div>
+                <div><label for="e-li">LinkedIn profile <em>(optional)</em></label><input id="e-li" type="url" inputmode="url" placeholder="https://linkedin.com/in/…"></div>
+                <div><label for="e-web">Website, portfolio or video <em>(optional)</em></label><input id="e-web" type="url" inputmode="url" placeholder="https://…"></div>
+                <div class="full"><label for="e-msg">In your own words <em>(optional)</em></label><textarea id="e-msg" placeholder="A project you're proud of, what you do best, and what you want next."></textarea></div>
+                <div class="full"><label for="e-ref">How did you hear about us? <em>(optional)</em></label><input id="e-ref" placeholder="LinkedIn, a friend, Google…"></div>
+              </div>
+              <label class="consent"><input type="checkbox" id="e-ok"><span>I agree that The Duke Force may keep my details for up to 12 months to contact me about suitable roles. I can ask for them to be deleted at any time by writing to info@thedukeforce.com.</span></label>
+              <input type="checkbox" id="e-bot" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <p class="err" id="e-err" role="alert" hidden></p>
+              <button class="btn btn-gold" type="submit" id="e-submit">Send my expression of interest <svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+            </div>
+            <div class="eoi-done" id="eoiSent" hidden>
+              <span class="sent-tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 12.5l3.6 3.4L17.5 8.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="tag">Expression of interest received</span>
+              <h4>Thank you<span id="eoi-name"></span>.</h4>
+              <p>Your profile is with The Duke Force, and a senior consultant will read it personally. When your experience fits a current or upcoming project, we will contact you at <b id="eoi-email"></b>. Until then, we keep your profile on file for 12 months.</p>
+              <button type="button" class="btn btn-ghost" data-close-story>Back to the website</button>
+            </div>
+            <div class="eoi-done" id="eoiFail" hidden>
+              <span class="tag">One more step</span>
+              <h4>Our form couldn't send just now.</h4>
+              <p>Please email your details and CV to <b class="sel">info@thedukeforce.com</b>. We've prepared the message for you.</p>
+              <pre class="eoi-msg" id="eoi-msg"></pre>
+              <div class="row-btns"><a class="btn btn-gold" id="eoi-mail" href="#">Open email app</a><button type="button" class="btn btn-ghost" id="eoi-copy">Copy message</button></div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div class="sv-foot">
+        <button type="button" class="btn btn-ghost" data-close-story>Back to the website</button>
+        <button type="button" class="btn btn-gold" data-jump="eoi">Express your interest</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="wrap f-main">
     <div>
@@ -1083,7 +1358,7 @@ footer a:hover{color:#fff}
       <p style="max-width:40ch">An independent UKG Ready implementation consultancy helping US organizations configure, launch and optimize HCM (Human Capital Management) and Workforce Management: timekeeping, payroll and HR.</p>
     </div>
     <div><h4>Solutions</h4><ul><li><a href="#solutions">HCM (Human Capital Management)</a></li><li><a href="#solutions">Workforce Management</a></li><li><a href="#solutions">Timekeeping</a></li><li><a href="#solutions">Scheduling</a></li><li><a href="#solutions">Accruals</a></li><li><a href="#solutions">Payroll</a></li><li><a href="#solutions">HR and Reporting</a></li></ul></div>
-    <div><h4>Company</h4><ul><li><a href="#promise">Our Promise</a></li><li><a href="#why">Why Us</a></li><li><a href="#method">How We Work</a></li><li><a href="#industries">Industries</a></li><li><a href="#assessment">Health Check</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="#promise">Our Promise</a></li><li><a href="#why">Why Us</a></li><li><a href="#method">How We Work</a></li><li><a href="#industries">Industries</a></li><li><a href="#assessment">Health Check</a></li><li><a href="#pledge">Five Trees Pledge</a></li><li><a href="#our-story">Our Story</a></li><li><a href="#careers">Careers</a></li></ul></div>
     <div><h4>Connect</h4><ul><li><a href="#contact">Contact Us</a></li><li><span class="sel">info@thedukeforce.com</span></li><li><a href="#contact">Book a Consultation</a></li></ul></div>
   </div>
   <div class="wrap" aria-hidden="true"><div class="wordmark">The Duke Force</div></div>
@@ -1371,33 +1646,37 @@ var PHOTOS = {
   /* photo frames on the Our Story page: the drawing shows until a photo is added to PHOTOS */
   document.querySelectorAll("[data-frame]").forEach(function(fr){var u=PHOTOS[fr.dataset.frame];if(u){fr.classList.add("has-photo");fr.querySelector(".frame-img").style.backgroundImage="url('"+u+"')";}});
 
-  /* Our Story opens as its own page from the menu (#our-story), never on the front page */
-  var sv=$("storyView"),svOpen=false,lastFocus=null,behind=[document.querySelector(".util"),nb,$("top"),document.querySelector("footer")];
-  function openStory(){
-    if(svOpen)return;svOpen=true;lastFocus=document.activeElement;
-    sv.hidden=false;sv.scrollTop=0;document.documentElement.classList.add("sv-open");
+  /* Our Story (#our-story) and Careers (#careers) open as their own pages, never on the front page */
+  var VIEWS={"#our-story":$("storyView"),"#careers":$("careersView")};
+  var sv=null,svOpen=false,lastFocus=null,behind=[document.querySelector(".util"),nb,$("top"),document.querySelector("footer")];
+  function openStory(h){
+    var v=VIEWS[h];if(!v)return;
+    if(svOpen&&sv===v)return;
+    if(svOpen)closeStory(true);
+    svOpen=true;sv=v;lastFocus=lastFocus||document.activeElement;
+    v.hidden=false;v.scrollTop=0;document.documentElement.classList.add("sv-open");
     behind.forEach(function(el){if(el)el.inert=true;});
-    requestAnimationFrame(function(){requestAnimationFrame(function(){sv.classList.add("in");});});
-    $("storyClose").focus({preventScroll:true});
+    requestAnimationFrame(function(){requestAnimationFrame(function(){v.classList.add("in");});});
+    var c=v.querySelector(".sv-close");if(c)c.focus({preventScroll:true});
   }
-  function closeStory(){
+  function closeStory(swap){
     if(!svOpen)return;svOpen=false;sv.classList.remove("in");sv.hidden=true;
+    if(swap===true)return;
     document.documentElement.classList.remove("sv-open");
     behind.forEach(function(el){if(el)el.inert=false;});
     var h=location.hash;
-    if(h==="#our-story")history.replaceState(null,"",location.pathname+location.search);
+    if(VIEWS[h])history.replaceState(null,"",location.pathname+location.search);
     else if(h&&h.length>1){var tg=document.querySelector(h);if(tg)setTimeout(function(){tg.scrollIntoView();},0);}
-    var back=(lastFocus&&!dr.contains(lastFocus))?lastFocus:$("burger");if(back&&back.focus)back.focus({preventScroll:true});
+    var back=(lastFocus&&!dr.contains(lastFocus))?lastFocus:$("burger");lastFocus=null;if(back&&back.focus)back.focus({preventScroll:true});
   }
-  function route(){if(location.hash==="#our-story")openStory();else closeStory();}
+  function route(){if(VIEWS[location.hash])openStory(location.hash);else closeStory();}
   window.addEventListener("hashchange",route);route();
-  $("storyClose").addEventListener("click",closeStory);
-  sv.querySelectorAll("[data-close-story]").forEach(function(b){b.addEventListener("click",closeStory);});
+  document.querySelectorAll(".story-view .sv-close,.story-view [data-close-story]").forEach(function(b){b.addEventListener("click",function(){closeStory();});});
   document.addEventListener("keydown",function(e){if(e.key==="Escape"&&svOpen)closeStory();});
   /* every consultation / contact link goes straight to the enquiry form */
   function goForm(e){
     if(e)e.preventDefault();
-    if(svOpen){closeStory();if(location.hash==="#our-story")history.replaceState(null,"",location.pathname+location.search);}
+    if(svOpen){closeStory();}
     var f=$("startForm");
     setTimeout(function(){
       f.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});
@@ -1473,6 +1752,73 @@ var PHOTOS = {
       .then(function(){busy(btn,false);ok();})
       .catch(function(){busy(btn,false);$("hc-err").textContent="Our form couldn't send just now. Please use Email them to us below.";$("hc-err").hidden=false;$("r-send").hidden=false;});
   });
+  /* v30: careers page: in-page jumps, practice pre-select, module chips, reveal, expression of interest form */
+  (function(){
+    var cv=$("careersView");if(!cv)return;
+    function jump(id,role){
+      var t=$(id);if(!t)return;
+      var top=t.getBoundingClientRect().top-cv.getBoundingClientRect().top+cv.scrollTop-90;
+      cv.scrollTo({top:top,behavior:reduce?"auto":"smooth"});
+      if(id==="eoi"){
+        if(role){$("e-role").value=role;$("e-role").removeAttribute("aria-invalid");}
+        var p=$("eoiPanel");p.classList.remove("flash");void p.offsetWidth;p.classList.add("flash");
+        setTimeout(function(){if(!$("eoiFields").hidden)$("e-name").focus({preventScroll:true});},reduce?0:700);
+      }
+    }
+    cv.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-jump]");if(!b)return;e.preventDefault();jump(b.dataset.jump,b.dataset.role);});
+    var chips=cv.querySelectorAll(".chip-t");
+    chips.forEach(function(c){c.addEventListener("click",function(){
+      var on=c.getAttribute("aria-pressed")!=="true",none=c.textContent==="None yet";
+      c.setAttribute("aria-pressed",on?"true":"false");
+      if(on)chips.forEach(function(x){if(x!==c&&(none||x.textContent==="None yet"))x.setAttribute("aria-pressed","false");});
+      $("e-mods").removeAttribute("aria-invalid");
+    });});
+    var rv=cv.querySelectorAll(".cv-rv");
+    if(reduce||!("IntersectionObserver" in window)){rv.forEach(function(x){x.classList.add("on");});}
+    else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("on");io.unobserve(x.target);}});},{root:cv,threshold:.12});rv.forEach(function(x){io.observe(x);});}
+
+    var f=$("eoiForm"),err=$("e-err");
+    f.querySelectorAll("input,select,textarea").forEach(function(x){x.addEventListener("input",function(){x.removeAttribute("aria-invalid");});});
+    function val(id){return $(id).value.trim();}
+    function bad(id,msg){err.textContent=msg;err.hidden=false;var el=$(id);el.setAttribute("aria-invalid","true");if(el.focus)el.focus();return false;}
+    function url(s){return /^(https?:\/\/)?[^\s.]+\.[^\s]{2,}$/i.test(s);}
+    f.addEventListener("submit",function(e){
+      e.preventDefault();err.hidden=true;
+      var name=val("e-name"),em=val("e-email"),loc=val("e-loc"),role=val("e-role"),yrs=val("e-yrs"),cvl=val("e-cv"),li=val("e-li"),web=val("e-web");
+      var mods=[].slice.call(chips).filter(function(c){return c.getAttribute("aria-pressed")==="true";}).map(function(c){return c.textContent;});
+      if(!name)return bad("e-name","Please enter your full name.");
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))return bad("e-email","Please enter a valid email so we can reach you.");
+      if(!loc)return bad("e-loc","Please tell us where you are based.");
+      if(!role)return bad("e-role","Please choose the practice you're interested in.");
+      if(!mods.length){err.textContent="Please choose at least one UKG Ready module, or None yet.";err.hidden=false;$("e-mods").setAttribute("aria-invalid","true");chips[0].focus();return;}
+      if(!yrs)return bad("e-yrs","Please choose your years of UKG Ready experience.");
+      if(!cvl&&!li)return bad("e-cv","Please share a link to your CV or your LinkedIn profile, or email your CV to info@thedukeforce.com.");
+      if(cvl&&!url(cvl))return bad("e-cv","That CV link doesn't look right. Please paste the full link.");
+      if(li&&!url(li))return bad("e-li","That LinkedIn link doesn't look right. Please paste the full link.");
+      if(!$("e-ok").checked){err.textContent="Please tick the consent box so we can keep your details on file.";err.hidden=false;$("e-ok").focus();return;}
+      var d={name:name,email:em,phone:val("e-phone")||"(not given)",location:loc,role:role,modules:mods.join(", "),experience:yrs,available:val("e-avail"),engagement:val("e-type"),compensation:val("e-pay")||"(not given)",cv_link:cvl||"(not given)",linkedin:li||"(not given)",portfolio:web||"(not given)",heard_from:val("e-ref")||"(not given)",about:val("e-msg")||"(not given)"};
+      var msg="Expression of interest: "+role+"\n\nName: "+name+"\nEmail: "+em+"\nPhone: "+d.phone+"\nBased in: "+loc+"\nUKG Ready modules: "+d.modules+"\nUKG Ready experience: "+yrs+"\nAvailable: "+d.available+"\nEngagement: "+d.engagement+"\nExpected compensation: "+d.compensation+"\nCV: "+d.cv_link+"\nLinkedIn: "+d.linkedin+"\nPortfolio: "+d.portfolio+"\nHeard about us: "+d.heard_from+"\n\nIn their own words:\n"+d.about+"\n\nConsent: agreed to be kept on file for up to 12 months.";
+      function sent(){$("eoi-name").textContent=", "+name.split(" ")[0];$("eoi-email").textContent=em;$("eoiFields").hidden=true;$("eoiSent").hidden=false;$("eoiPanel").scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});}
+      function fail(){$("eoi-msg").textContent=msg;$("eoi-mail").href="mailto:"+EMAIL+"?subject="+encodeURIComponent("Expression of interest: "+role+" ("+name+")")+"&body="+encodeURIComponent(msg);$("eoiFields").hidden=true;$("eoiFail").hidden=false;}
+      if($("e-bot").checked){sent();return;}
+      var btn=$("e-submit");busy(btn,true,"Sending…");
+      d.subject="Expression of interest: "+role+" ("+name+")";d.message=msg;
+      sendForm(d).then(function(){busy(btn,false);sent();}).catch(function(){busy(btn,false);fail();});
+    });
+    $("eoi-copy").addEventListener("click",function(){copyText($("eoi-msg").textContent,this,$("eoi-msg"));});
+  })();
+
+  /* v30: five trees: saplings grow and the counter counts up when the pledge scrolls into view */
+  (function(){
+    var art=$("plArt"),cnt=$("plCount");if(!art)return;
+    if(reduce||!("IntersectionObserver" in window))return;
+    art.classList.add("pl-ready");cnt.textContent="0";
+    var io=new IntersectionObserver(function(en){if(!en[0].isIntersecting)return;io.disconnect();
+      art.classList.add("grow");var n=0;var t=setInterval(function(){n++;cnt.textContent=n;if(n>=5)clearInterval(t);},300);
+    },{threshold:.35});
+    io.observe(art);
+  })();
+
 })();
 </script>
 
